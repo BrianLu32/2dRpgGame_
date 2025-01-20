@@ -36,7 +36,6 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetFloat("HorizontalSpeed", Mathf.Abs(speedX));
         animator.SetFloat("VerticalSpeed", Mathf.Abs(speedY));
 
-        print(speedX + " + " + speedY);
         rb.linearVelocity = new Vector2(speedX, speedY);
     }
 }

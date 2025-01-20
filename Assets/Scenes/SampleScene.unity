@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 1136694866}
   - component: {fileID: 1136694865}
   - component: {fileID: 1136694869}
+  - component: {fileID: 1136694870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -407,7 +408,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.23, y: 0.325}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -451,6 +452,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1136694870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136694864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3262f8e7fcdc6c14fad84841ec5cc015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combo:
+  - {fileID: 11400000, guid: 7d1468018b9b4424b82eed0337d8137c, type: 2}
+  - {fileID: 11400000, guid: 68f4a6a08dbd2874699e612482ed366d, type: 2}
+  - {fileID: 11400000, guid: e1445aa2ab3a1a24389e47a8bbfa3538, type: 2}
+  - {fileID: 11400000, guid: 27aa1b897e509e9408b215749b8e5772, type: 2}
+  comboDelay: 0.5
+  attackDelay: 0.2
 --- !u!1 &1476040128
 GameObject:
   m_ObjectHideFlags: 0
