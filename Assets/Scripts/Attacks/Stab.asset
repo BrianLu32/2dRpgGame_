@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff37fc215121fff44af4bb4d7beea1ef, type: 3}
-  m_Name: Attack3
+  m_Name: Stab
   m_EditorClassIdentifier: 
-  animatorOV: {fileID: 22100000, guid: 9743b71a86df0f047878a8e127c0dd5b, type: 2}
+  animatorOV: {fileID: 22100000, guid: a012cc9845ec9724d9d9b3edec9f0a59, type: 2}
+  attackDelay: 0.625

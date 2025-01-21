@@ -466,11 +466,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combo:
   - {fileID: 11400000, guid: 7d1468018b9b4424b82eed0337d8137c, type: 2}
-  - {fileID: 11400000, guid: 68f4a6a08dbd2874699e612482ed366d, type: 2}
+  - {fileID: 11400000, guid: b15bcd20d2268ef44b401ddb5b3f6fbd, type: 2}
   - {fileID: 11400000, guid: e1445aa2ab3a1a24389e47a8bbfa3538, type: 2}
-  - {fileID: 11400000, guid: 27aa1b897e509e9408b215749b8e5772, type: 2}
-  comboDelay: 0.5
-  attackDelay: 0.2
+  comboDelays:
+  - 0
+  - 0.5
+  - 0.45
+  comboDelay: 0
+  attackDelay: 0.7
 --- !u!1 &1476040128
 GameObject:
   m_ObjectHideFlags: 0

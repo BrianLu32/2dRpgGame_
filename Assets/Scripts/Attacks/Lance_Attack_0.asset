@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff37fc215121fff44af4bb4d7beea1ef, type: 3}
-  m_Name: Attack4
+  m_Name: Lance_Attack_0
   m_EditorClassIdentifier: 
-  animatorOV: {fileID: 22100000, guid: c7e9704c82f1a26459a6b9e0f2358fc9, type: 2}
+  animatorOV: {fileID: 22100000, guid: 6cc58de9014a398448e9e43e7fa153b6, type: 2}
+  attackDelay: 0.75

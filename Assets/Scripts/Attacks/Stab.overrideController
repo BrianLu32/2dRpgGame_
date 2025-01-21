@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack2
+  m_Name: Stab
   m_Controller: {fileID: 9100000, guid: 9142b792d7cef4b468b5406654795357, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: c97196264f5be7443a4bc94720dacc20, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 339c1982ae35d324e83a8bb72751d76e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 63fe63c4215923f4e95b4e69780b6c25, type: 2}
