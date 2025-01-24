@@ -6,12 +6,13 @@ public class PlayerCtrl : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float sprintMultiplyer = 2.0f;
+    [SerializeField] float dodgeCooldown = 2.0f;
+    bool isDodgeCooldown = false;
     float speedX, speedY;
     public List<MovementSO> movement;
 
     Rigidbody2D rb;
     Animator animator;
-    Animator originalAnimator;
     SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +20,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        originalAnimator = animator;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -40,11 +40,9 @@ public class PlayerCtrl : MonoBehaviour
 
             if(Input.GetKey(KeyCode.LeftShift) && (Mathf.Abs(speedX) > 0 || Mathf.Abs(speedY) > 0))
             {
-                animator.runtimeAnimatorController = movement[0].animatorOV;
-                animator.SetBool("isSprinting", true);
+                Sprint();
                 speedX *= sprintMultiplyer;
                 speedY *= sprintMultiplyer;
-                animator.Play("Sprint", 0);
             }
             else
             {
@@ -55,6 +53,11 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetFloat("HorizontalSpeed", Mathf.Abs(speedX));
             animator.SetFloat("VerticalSpeed", Mathf.Abs(speedY));
 
+            if(Input.GetKeyDown(KeyCode.Space) && !isDodgeCooldown)
+            {
+                Dodge();
+            }
+
             rb.linearVelocity = new Vector2(speedX, speedY);
         }
         else 
@@ -63,11 +66,26 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    void ExitSprint()
+    void Sprint()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sprint"))
-        {
+        animator.runtimeAnimatorController = movement[0].animatorOV; // 0 = sprint animation, should probably find a different way to handle this lol
+        animator.SetBool("isSprinting", true);
+        animator.Play("Sprint", 0);
+    }
 
-        }
+    void Dodge()
+    {
+        isDodgeCooldown = true;
+        StartCoroutine(DodgeCooldownTimer());
+        print("Dodge is on CD");
+        animator.runtimeAnimatorController = movement[1].animatorOV; // 1 = slide animation
+        animator.Play("Slide", 0);
+    }
+
+    IEnumerator DodgeCooldownTimer()
+    {
+        yield return new WaitForSeconds(dodgeCooldown);
+        print("Dodge is available");
+        isDodgeCooldown = false;
     }
 }
