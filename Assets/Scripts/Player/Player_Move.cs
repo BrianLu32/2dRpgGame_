@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    [SerializeField] 
-    float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float sprintMultiplyer = 2.0f;
+    [SerializeField] float dodgeCooldown = 2.0f;
+    bool isDodgeCooldown = false;
     float speedX, speedY;
+    public List<MovementSO> movement;
 
     Rigidbody2D rb;
     Animator animator;
@@ -35,9 +38,25 @@ public class PlayerCtrl : MonoBehaviour
             }
             speedY = Input.GetAxisRaw("Vertical") * moveSpeed;
 
+            if(Input.GetKey(KeyCode.LeftShift) && (Mathf.Abs(speedX) > 0 || Mathf.Abs(speedY) > 0))
+            {
+                Sprint();
+                speedX *= sprintMultiplyer;
+                speedY *= sprintMultiplyer;
+            }
+            else
+            {
+                animator.SetBool("isSprinting", false);
+            }
+
             // Animation Controller
             animator.SetFloat("HorizontalSpeed", Mathf.Abs(speedX));
             animator.SetFloat("VerticalSpeed", Mathf.Abs(speedY));
+
+            if(Input.GetKeyDown(KeyCode.Space) && !isDodgeCooldown)
+            {
+                Dodge();
+            }
 
             rb.linearVelocity = new Vector2(speedX, speedY);
         }
@@ -45,5 +64,28 @@ public class PlayerCtrl : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(0.0f, 0.0f);
         }
+    }
+
+    void Sprint()
+    {
+        animator.runtimeAnimatorController = movement[0].animatorOV; // 0 = sprint animation, should probably find a different way to handle this lol
+        animator.SetBool("isSprinting", true);
+        animator.Play("Sprint", 0);
+    }
+
+    void Dodge()
+    {
+        isDodgeCooldown = true;
+        StartCoroutine(DodgeCooldownTimer());
+        print("Dodge is on CD");
+        animator.runtimeAnimatorController = movement[1].animatorOV; // 1 = slide animation
+        animator.Play("Slide", 0);
+    }
+
+    IEnumerator DodgeCooldownTimer()
+    {
+        yield return new WaitForSeconds(dodgeCooldown);
+        print("Dodge is available");
+        isDodgeCooldown = false;
     }
 }
