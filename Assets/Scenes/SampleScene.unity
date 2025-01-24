@@ -359,6 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  sprintMultiplyer: 1.25
+  movement:
+  - {fileID: 11400000, guid: df025a36182d3c74b85bfbb4e9a0e91b, type: 2}
 --- !u!212 &1136694867
 SpriteRenderer:
   m_ObjectHideFlags: 0
