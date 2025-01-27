@@ -81,7 +81,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         isDodgeCooldown = true;
         StartCoroutine(DodgeCooldownTimer());
-        print("Dodge is on CD");
         animator.runtimeAnimatorController = movement[1].animatorOV; // 1 = slide animation
         animator.Play("Slide", 0);
     }
@@ -89,7 +88,6 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator DodgeCooldownTimer()
     {
         yield return new WaitForSeconds(dodgeCooldown);
-        print("Dodge is available");
         isDodgeCooldown = false;
     }
 }
