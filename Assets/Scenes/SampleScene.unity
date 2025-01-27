@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   sprintMultiplyer: 1.25
+  dodgeCooldown: 2
   movement:
   - {fileID: 11400000, guid: df025a36182d3c74b85bfbb4e9a0e91b, type: 2}
   - {fileID: 11400000, guid: a7857353cae0e1e489c3ca5c14d2cf37, type: 2}
@@ -478,6 +479,8 @@ MonoBehaviour:
   - 0.45
   comboDelay: 0
   attackDelay: 0.7
+  blockSO: {fileID: 11400000, guid: 418e5cf0d1ab4414dbbe51c94d62a8ae, type: 2}
+  blockCooldown: 1
 --- !u!1 &1476040128
 GameObject:
   m_ObjectHideFlags: 0

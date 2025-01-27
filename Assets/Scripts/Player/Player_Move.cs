@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    // General Movement
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float sprintMultiplyer = 2.0f;
+    float speedX, speedY;
+
+    // Dodge Mechanics
     [SerializeField] float dodgeCooldown = 2.0f;
     bool isDodgeCooldown = false;
-    float speedX, speedY;
-    public List<MovementSO> movement;
 
+    // Animation Controls
+    public List<MovementSO> movement;
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -53,16 +57,16 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetFloat("HorizontalSpeed", Mathf.Abs(speedX));
             animator.SetFloat("VerticalSpeed", Mathf.Abs(speedY));
 
-            if(Input.GetKeyDown(KeyCode.Space) && !isDodgeCooldown)
-            {
-                Dodge();
-            }
-
             rb.linearVelocity = new Vector2(speedX, speedY);
         }
         else 
         {
             rb.linearVelocity = new Vector2(0.0f, 0.0f);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && !isDodgeCooldown)
+        {
+            Dodge();
         }
     }
 
@@ -77,7 +81,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         isDodgeCooldown = true;
         StartCoroutine(DodgeCooldownTimer());
-        print("Dodge is on CD");
         animator.runtimeAnimatorController = movement[1].animatorOV; // 1 = slide animation
         animator.Play("Slide", 0);
     }
@@ -85,7 +88,6 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator DodgeCooldownTimer()
     {
         yield return new WaitForSeconds(dodgeCooldown);
-        print("Dodge is available");
         isDodgeCooldown = false;
     }
 }
